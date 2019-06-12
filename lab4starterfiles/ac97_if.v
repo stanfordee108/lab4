@@ -83,18 +83,18 @@ module ac97_if(
         // 4: Sample rate: 48KHz = 0xBB80
         // 5: Number of channels: 2
         // (6): No annotations: 0
-        $fwrite(file, ".snd%u%u%u%u%u%u",
-            32'h1C_00_00_00, 32'hFF_FF_FF_FF, 32'h03_00_00_00,
-            32'h80_BB_00_00, 32'h02_00_00_00, 32'h00_00_00_00);
+        //$fwrite(file, ".snd%u%u%u%u%u%u",
+        //    32'h1C_00_00_00, 32'hFF_FF_FF_FF, 32'h03_00_00_00,
+        //    32'h80_BB_00_00, 32'h02_00_00_00, 32'h00_00_00_00);
         // After this is all the PCM data, stored in big-endian format.
         samplecount = 0;
         forever begin
             // Wait for a new sample
             @(posedge new_frame_one_pulse);
             // Output the sample data (16-bit big-endian, left then right)
-            $fwrite(file, "%u",
-                {PCM_Playback_Right[7:0], PCM_Playback_Right[15:8],
-                  PCM_Playback_Left[7:0],  PCM_Playback_Left[15:8]});
+            //$fwrite(file, "%u",
+            //    {PCM_Playback_Right[7:0], PCM_Playback_Right[15:8],
+            //      PCM_Playback_Left[7:0],  PCM_Playback_Left[15:8]});
             samplecount = samplecount + 1;
             if (samplecount && samplecount % 48000 == 0)
                 $display("[%0t] Audio out: generated %0d seconds.",
