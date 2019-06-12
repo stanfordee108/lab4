@@ -1,4 +1,4 @@
-# lab4
+# lab4 FAQ
 
 Q: Should "note_done", "load_new_note", "generate_next_sample", and "new_sample_ready" be one pulses or set high?
     
